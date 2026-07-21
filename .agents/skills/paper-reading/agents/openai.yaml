@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paper Reading"
+  short_description: "Structured academic paper reading workflow"
+  default_prompt: "Use $paper-reading to analyze this paper and save evidence-backed notes."
