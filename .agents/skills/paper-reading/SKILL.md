@@ -1,6 +1,6 @@
 ---
 name: paper-reading
-description: Run an interactive, evidence-backed academic paper reading session from a conversation attachment or user-provided source, organize paper content with the user's questions and the model's answers by section, and save one final Markdown note to a configured Obsidian directory only when the user explicitly asks to save. Use when the user asks to read, explain, compare, reproduce, critique, or finish and save a paper-reading session.
+description: Automatically start an interactive, evidence-backed academic paper reading session when a PDF is attached or a paper source is provided, organize paper content with the user's questions and the model's answers by section, and save one final Markdown note to a configured Obsidian directory only when the user explicitly asks to save. Use when a paper is uploaded or the user asks to read, explain, compare, reproduce, critique, or finish and save a paper-reading session.
 ---
 
 # Interactive Paper Reading
@@ -17,6 +17,21 @@ Use this skill as a conversation-first reading workflow. Treat the current Codex
 - Persist only after an explicit save request.
 
 If the paper is not available in the current conversation or through an accessible source, ask the user to attach it or provide a readable source. Do not fabricate missing content.
+
+## Automatic startup on paper upload
+
+When a new conversation includes an attached PDF or an accessible paper source, automatically activate this workflow if the user has not asked for an unrelated operation. Do not require the user to type `$paper-reading` or remember a fixed startup prompt.
+
+On the first response after the paper becomes available:
+
+1. Identify the title, authors, year, venue, and research area from the paper metadata or first page.
+2. State that the interactive reading session has started.
+3. Give a short paper map covering the abstract, Introduction, Related Work, Method, Experiments, Discussion, and Limitations when those sections are available.
+4. Begin the first-pass explanation from the Introduction or the paper's first substantive section.
+5. Ask for the user's research context as an optional follow-up, but do not block the first-pass reading if it is not provided.
+6. Remind the user that they can ask questions naturally and that no local files will be created before an explicit save request.
+
+If the attachment is unreadable, missing, or not a paper, explain the problem and ask for a readable source instead of pretending the session started.
 
 ## Session state
 
@@ -37,7 +52,7 @@ Use the conversation history relevant to the paper. Do not reconstruct or claim 
 
 ### 1. Establish the reading session
 
-Confirm the paper identity, the user's research context, and the intended reading goal. If no goal is provided, start with a structured first pass.
+For an automatically started session, confirm the paper identity and start a structured first pass immediately. For a user-invoked session without an attachment, ask for the paper source. Treat research context and a specific reading goal as helpful but non-blocking inputs; use a first-pass reading by default.
 
 ### 2. Build the paper map
 

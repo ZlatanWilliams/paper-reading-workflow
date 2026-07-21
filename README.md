@@ -57,26 +57,26 @@ FILENAME_TEMPLATE={year}-{author}-{short_title}-{reading_date}.md
 C:\Users\zhaoy\Documents\论文阅读 2
 ```
 
-### 2. 上传论文并启动交互
+### 2. 上传论文即可开始
 
-在新聊天中上传 PDF，然后发送：
+在新聊天中直接上传 PDF，不需要输入 `$paper-reading` 或其他固定启动 Prompt。
+
+上传后，Skill 会自动：
+
+- 识别论文标题、作者、年份和研究领域；
+- 建立摘要、Introduction、Related Work、Method、Experiments、Discussion 等结构地图；
+- 从 Introduction 或论文第一个实质性章节开始第一轮讲解；
+- 询问你的研究背景，但不会因为你暂时没有填写而阻塞阅读；
+- 记录后续问题、解答和理解修正；
+- 不创建论文文件夹、不复制 PDF、不保存中间 Markdown。
+
+你可以直接继续提问，例如：
 
 ```text
-请使用 $paper-reading 开始交互式阅读这篇论文。
-
-我的研究背景：
-<填写你的研究方向、当前问题和已有基础>
-
-请先完成论文身份确认和整体结构定位，然后从 Introduction 开始。
-阅读过程中：
-- 按论文结构组织内容；
-- 记录我提出的问题及你的回答；
-- 把我的理解和后续修正放回对应章节；
-- 关键结论标注页码、章节、图、表或附录；
-- 不创建论文文件夹，不复制 PDF，不保存中间 Markdown。
-
-在我说“整理并保存本次阅读”之前，不要写入 Obsidian。
+我目前主要研究推荐系统，请从这个背景出发解释这篇论文的贡献。
 ```
+
+如果你没有额外说明，Codex 会按“结构化第一轮阅读”开始。
 
 ### 3. 继续分阶段提问
 
@@ -94,7 +94,7 @@ C:\Users\zhaoy\Documents\论文阅读 2
 这个实验是否真的证明了作者的核心结论？请检查 baseline、指标和 ablation。
 ```
 
-Skill 会把这些问题和回答整理到对应的 `Introduction`、`Method` 或 `Experiments and Results` 章节，而不是把所有问答堆在笔记末尾。
+Skill 会把这些问题和回答整理到对应的 `Introduction`、`Method` 或 `Experiments and Results` 章节，而不是把所有问答堆在笔记末尾。只有在你明确要求保存时，才会写入 Obsidian。
 
 ### 4. 结束并保存
 
