@@ -1,4 +1,4 @@
 interface:
-  display_name: "Paper Reading"
-  short_description: "Structured academic paper reading workflow"
-  default_prompt: "Use $paper-reading to analyze this paper and save evidence-backed notes."
+  display_name: "Interactive Paper Reading"
+  short_description: "Read papers interactively and save Obsidian notes"
+  default_prompt: "Use $paper-reading to discuss this paper interactively, then save the final Obsidian note when I ask."
