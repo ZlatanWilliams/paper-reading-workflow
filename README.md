@@ -1,4 +1,4 @@
-# Paper Reading Workflow v0.1.2
+# Paper Reading Workflow v0.1.1
 
 这是一个基于 Codex App 对话交互的论文阅读工作流。
 
@@ -137,3 +137,7 @@ Codex 会检查论文材料、读取本地输出配置、生成文件名、检�
 复盘文档不是自动变更指令。处理时必须先完整理解问题，区分事实、诊断、建议和论文特定问题，再判断它是否是具有通用性的工作流缺陷。只有经过评估后确实值得修改的问题，才进入 [WORKFLOW_OPTIMIZATION_PRIORITY.md](WORKFLOW_OPTIMIZATION_PRIORITY.md)，并按该文档从高到低的顺序迭代。每次迭代都记录采纳、暂缓、拒绝或不纳入的理由。
 
 可直接复制 [templates/session-review.md](templates/session-review.md) 作为复盘模板。`HANDOFF-论文短名-YYYY-MM-DD.md` 用于会话交接，与复盘文档用途不同。两类文件均为本地会话产物，默认不会提交或同步到远程仓库。
+
+## 版本与发布权限
+
+版本号、Git 标签、提交和远程推送都属于受控操作。除非用户在当前请求中明确授权，否则不得擅自修改版本号、创建或推送标签、提交或推送发布。小型文档修复默认只保留为本地变更。
