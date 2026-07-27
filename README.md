@@ -1,4 +1,4 @@
-# Paper Reading Workflow v0.1.0
+# Paper Reading Workflow v0.1.1
 
 这是一个基于 Codex App 对话交互的论文阅读工作流。
 
