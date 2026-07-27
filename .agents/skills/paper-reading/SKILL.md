@@ -78,6 +78,34 @@ Keep these labels distinct:
 
 Answer follow-up questions in context. Do not force the user to repeat the paper path or restate prior questions during the same chat. If the user asks to go deeper, route the discussion to the relevant section rather than restarting the full summary.
 
+## Reading focus and high-level analysis
+
+Maintain a compact focus map for the session. Deepen sections explicitly prioritized by the user, compress lower-priority details, and adjust the map when later questions reveal a more important gap. Do not block the first pass while waiting for a perfectly specified research goal.
+
+For method-heavy papers, actively inspect whether the paper provides a unifying framework, taxonomy, evolution chain, variable decomposition, or cross-method comparison that explains multiple local details. If such a structure exists, surface it as an independent high-level subsection and connect later explanations back to it. Do not invent a framework; label a model-generated synthesis as an inference.
+
+## SESSION_REVIEW artifact and optimization loop
+
+At the end of a paper-reading session, or when the user explicitly asks for a review artifact, create a root-level `SESSION_REVIEW-YYYY-MM-DD-论文短名.md`. If the date has multiple reviews, use `-01`, `-02`, and later suffixes. Use `templates/session-review.md` as the structural reference.
+
+The review may record communication quality, reading-focus errors, evidence-boundary issues, save/encoding/path failures, tool limitations, and reusable next steps. It is a diagnostic input, not a verbatim transcript, an Obsidian note, or an automatic change list.
+
+When processing a `SESSION_REVIEW`:
+
+1. Read the entire document, then read `WORKFLOW_OPTIMIZATION_PRIORITY.md` and the applicable project rules.
+2. Separate observed facts, user evaluations, model inferences, concrete suggestions, and paper-specific content questions.
+3. Check whether the issue is already covered by an existing rule before proposing a change.
+4. Evaluate generality, severity, reproducibility, expected benefit, and implementation cost. Do not change the Skill merely because the review mentions a problem or suggestion.
+5. Update the priority document with the assessment and status before changing the Skill or templates.
+6. Implement only the next eligible item in priority order, using the smallest sufficient change.
+7. Record why each item was adopted, deferred, rejected, or kept paper-specific, and validate the resulting behavior.
+
+Keep `SESSION_REVIEW-*` and `HANDOFF-*` as local session artifacts. Do not sync them to the remote repository unless the user explicitly changes this policy.
+
+## Existing note revision safety
+
+When the user asks to revise an existing Obsidian note, read the current target file first. Treat the user's current note as the source of truth, identify the exact section to change, and apply the smallest local patch. Preserve unrelated content, frontmatter, tables, links, and the user's wording. Re-read the target after writing and report only a path that was actually written and verified. Never regenerate the whole note when a local patch is sufficient.
+
 ## Explicit save trigger
 
 Only interpret one of the following as a request to persist the session:
@@ -132,7 +160,7 @@ Do not copy the source PDF, create a paper folder, or write intermediate artifac
 
 ## Note structure
 
-Use `templates/paper-reading-note.md` as the structural reference. The final note must contain:
+Resolve `templates/paper-reading-note.md` relative to the project root, not relative to this Skill directory. If it is missing, record the configuration problem and use only a documented fallback. The final note must contain:
 
 - YAML frontmatter with title, authors, year, venue, reading date, source, tags, and status.
 - paper metadata and core conclusion
@@ -153,6 +181,14 @@ Within each applicable section, interleave:
 - `证据位置`
 
 Do not append a full raw chat transcript. Preserve only a readable, faithful synthesis of the relevant interaction.
+
+## Markdown, formula, encoding, and path rules
+
+- Write Markdown as UTF-8 without a BOM.
+- Use `$...$` for inline mathematics and `$$...$$` for display mathematics. Do not leave pseudo-LaTeX such as `delta_t = ...` when it is intended to render as a formula.
+- In YAML frontmatter, prefer single-quoted strings or forward-slash Windows paths. Do not place unescaped backslashes in YAML double-quoted strings.
+- Before reporting a successful save, verify that the target exists and can be re-read as UTF-8. If an external write or verification fails, report the failure rather than claiming success.
+- If no reliable Markdown/Obsidian renderer is available, report text and encoding validation only; do not claim that visual rendering was checked.
 
 ## Evidence and uncertainty rules
 

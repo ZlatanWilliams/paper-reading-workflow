@@ -1,2 +1,4 @@
 # Personal machine-only paper-reading output configuration
 .codex/paper-reading.local.md
+SESSION_REVIEW-*.md
+HANDOFF-*.md
