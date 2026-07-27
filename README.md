@@ -1,8 +1,8 @@
-# Paper Reading Workflow v0.1.1
+# Paper Reading Workflow v0.1.2
 
 这是一个基于 Codex App 对话交互的论文阅读工作流。
 
-它不把论文 PDF 保存到当前 C 盘仓库，也不在仓库中创建每篇论文的文件夹。你在对话框中上传论文并持续提问，阅读结束后，Codex 将本次对话整理成一份结构化 Markdown 笔记，保存到本机 Obsidian 知识库。
+它不把论文 PDF 保存到本地工作流仓库，也不在仓库中创建每篇论文的文件夹。你在对话框中上传论文并持续提问，阅读结束后，Codex 将本次对话整理成一份结构化 Markdown 笔记，保存到你配置的 Obsidian 知识库目录。
 
 ## 工作方式
 
@@ -41,7 +41,7 @@ templates/paper-reading-note.md                # 单文件笔记结构
 然后在本地配置中填写 Obsidian 输出目录：
 
 ```text
-OUTPUT_DIR=D:\Personal Data\obsidian\zzy-kb\raw\paper-reading-notes
+OUTPUT_DIR=<YOUR_OBSIDIAN_NOTES_DIRECTORY>
 FILENAME_TEMPLATE={year}-{author}-{short_title}-{reading_date}.md
 ```
 
@@ -54,7 +54,7 @@ FILENAME_TEMPLATE={year}-{author}-{short_title}-{reading_date}.md
 在 Codex App 中打开当前仓库作为 Local Project：
 
 ```text
-C:\Users\zhaoy\Documents\论文阅读 2
+<PATH_TO_PAPER_READING_WORKFLOW>
 ```
 
 ### 2. 上传论文即可开始
@@ -125,7 +125,7 @@ Codex 会检查论文材料、读取本地输出配置、生成文件名、检�
 ## 重要边界
 
 - 当前对话是临时阅读空间；新开聊天后，需要重新上传论文或提供项目中可访问的来源。
-- 只有最终 Markdown 笔记写入 Obsidian；PDF 不写入 C 盘仓库。
+- 只有最终 Markdown 笔记写入 Obsidian；PDF 不写入工作流仓库。
 - 目标目录不存在时，不会静默改用其他路径或自动改变配置。
 - 不得编造论文页码、实验结果、引用或用户没有提出过的问题。
 - 本仓库只用于开发和备份工作流，不用于存放受版权保护的论文全文。
